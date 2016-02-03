@@ -19,11 +19,12 @@ public abstract class CommandBase extends Command {
 	public static void init() {
 		subsystemlist = new Vector<Subsystem>();
 		
-		oi = new OI();
-		
 		driveBase = new DriveBase();
 		subsystemlist.addElement(driveBase);
-		SmartDashboard.putString("Stuff", "Drivebase Made");
+		
+		oi = new OI();
+		
+		SmartDashboard.putString("CommandBase", "Subsystems Instantiated");
 	}
 	
 	public CommandBase() {

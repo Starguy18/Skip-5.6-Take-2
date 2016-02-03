@@ -3,19 +3,30 @@ package org.usfirst.frc.team3467.robot.subsystems.DriveBase.commands;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team3467.robot.commands.CommandBase;
+import org.usfirst.frc.team3467.robot.Robot;
+import org.usfirst.frc.team3467.robot.subsystems.DriveBase.DriveBase;
 
 public class TankDrive extends CommandBase {
 
+	//private DriveBase db;
+	public TankDrive() {
+		requires(driveBase);
+		SmartDashboard.putString("TankDrive", "Instantiated");
+	}
+	
 	@Override
 	protected void initialize() {
-		requires(driveBase);
-		SmartDashboard.putString("Stuff3", "Command init complete");
+		//db = DriveBase.getinstance();
+		//requires(db);
+		SmartDashboard.putString("TankDrive", "Command init complete");
 		
 	}
 
 	@Override
 	protected void execute() {
-		driveBase.driveTank(oi.getleft(), oi.getRight());
+		//Robot.driveBase.driveTank(CommandBase.oi.getleft(), CommandBase.oi.getRight());
+		driveBase.driveTank(oi.getLeft(), oi.getRight());
+		SmartDashboard.putString("TankDrive", "Executing");
 	}
 
 	@Override

@@ -8,6 +8,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team3467.robot.commands.CommandBase;
+import org.usfirst.frc.team3467.robot.subsystems.DriveBase.DriveBase;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -16,7 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
+	
     Command autonomousCommand;
     SendableChooser chooser;
 
@@ -24,10 +27,19 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
+    
+    public Robot() {
+ 
+    }
+    
     public void robotInit() {
-
+    	
         chooser = new SendableChooser();
-//        chooser.addObject("My Auto", new MyAutoCommand());
+        //chooser.addObject("My Auto", new MyAutoCommand());
+        
+        CommandBase.init();
+        SmartDashboard.putString("Robot", "CommandBase init succesful");
+
         SmartDashboard.putData("Auto mode", chooser);
     }
 	
@@ -44,15 +56,6 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 	}
 
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select between different autonomous modes
-	 * using the dashboard. The sendable chooser code works with the Java SmartDashboard. If you prefer the LabVIEW
-	 * Dashboard, remove all of the chooser code and uncomment the getString code to get the auto name from the text box
-	 * below the Gyro
-	 *
-	 * You can add additional auto modes by adding additional commands to the chooser code above (like the commented example)
-	 * or additional comparisons to the switch structure below with additional strings & commands.
-	 */
     public void autonomousInit() {
         autonomousCommand = (Command) chooser.getSelected();
         
@@ -71,9 +74,6 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
-    /**
-     * This function is called periodically during autonomous
-     */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }

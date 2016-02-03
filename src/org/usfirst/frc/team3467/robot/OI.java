@@ -23,12 +23,12 @@ public class OI {
 	}
 	
 	public double getRight() {
-		SmartDashboard.putString("OI Stuff1", "Got Right");
+		SmartDashboard.putString("OI", "Got rightjoystick value");
 		return rightJoystick.getY();
 	}
 	
-	public double getleft() {
-		SmartDashboard.putString("OI Stuff2", "Got Left");
+	public double getLeft() {
+		SmartDashboard.putString("OI", "Got leftjoystick value");
 		return leftJoystick.getY();
 	}
 	
